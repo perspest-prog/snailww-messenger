@@ -1,75 +1,47 @@
-# React + TypeScript + Vite
+<h1 align='center'>here we go again...</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Зачем?
 
-Currently, two official plugins are available:
+Когда я писал аналогичный README Сереже, я написал, что главная цель - написать полноценный работающий месседжер. Сейчас я понимаю, что ни я в свое время, ни он, его так и не сделали, но при этом оба уже работаем. На самом деле самое важное - набить руку в плане написания кода, и получить понимание, как подобные приложения вообще пишутся.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Ничего страшного, если ты не доделаешь его до конца, или будешь иногда использовать нейронки (для объяснений, а не чтобы она писала за тебя код). Так же в проекте используется весьма экспериментальный конфиг eslint, который я уже давно пишу сам. Он не доделан, так как у меня нет времени его тестировать, и я подумал, что этот проект самое то.
 
-## React Compiler
+## Как будет устроена работа?
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Напрямую коммитить в главную ветку тебе должно быть запрещено физически (надо будет проверить). Вместо этого ты будешь открывать **Pull Request**, так работают во всем мире. Чтобы открыть его, тебе от главной ветки нужно создать свою, назвать ее в формате `features/<название изменения>` (так принято), сделать один или несколько коммитов, и после запушить ее. После этого ты должна зайти на страницу репозитория в github, и нажать кнопку. 
 
-## Expanding the ESLint configuration
+Изменения ты будешь вносить поэтапно, раз за разом открывая **новый** пул реквест. Каждый из них я сначала буду проверять, и если мне что-то не понравится - оставлять комментарии. Ты должна будешь их исправить, снова закоммитить и сделать пуш (повторно открыть пул реквест не надо). Я постараюсь проверять быстро, так же я вроде бы настроил автоматические проверки, которые должны мне помочь.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Так же, иногда, я буду (постараюсь) специально тебе мешать, создавая мердж конфликты и что-то в этом духе. Это нужно, чтобы ты заранее познакомилась с такими ситуациями и научилась их решать. На любой стажировке или работе они точно будут.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Полезные ссылки
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- https://perspest-prog.github.io/snailww-messenger/ - здесь хостится наш сайт. После каждого закрытого пул реквеста, он автоматически будет обновляться.
+- https://www.figma.com/design/jF5fFFzgGOxQeB4CmKWTiE - ссылка на макеты мессенджера, чтобы тебе самостоятельно не выдумывать дизайн.
+- https://ya-praktikum.tech/api/v2/swagger/ - ссылка на документацию API. Мы будем использовать спизженный у яндекс практикума бекенд.
+- https://ya-praktikum.tech/api/v2/openapi/ws - документация по WebSocket API, будет использоваться ближе к концу для подключения чатов.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## С чего начать?
 
-```
+Для начала разберить с проектом, как его запускать и так далее. Если что-то становится не понятно, в стиле...
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+- А зачем этот файл?
+- А почему тут используется yarn, что это такое?
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+...смело можешь спрашивать нейронку или меня. Начинай разбираться как писать реакт компоненты, вспоминай css и html. Первая задача - **сделать форму регистрации и авторизации**, без бизнес-логики, просто сами компоненты. Сделай отдельные компоненты для кнопок и инпутов, ипользуй CSS Modules (спросишь у нейронки, обязательно спрашивай **зачем это используют, почему лучше с ними, чем без них**).
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Вообще в плане CSS я понимаю, что ты уже вряд ли помнишь, какое правило за что отвечает. Очень тебя прошу пользоваться нейронкой в ключе "А как мне отцентровать этот блок? А как убрать границы у инпута?", а не просто просить его написать за тебя стили.
 
-```
+## Что потом?
+
+Я специально добавил в проект не все библиотеки, что нам понадобятся. Впоследствии мы будем использовать следующие библиотеки.
+
+- [`react-router`](https://reactrouter.com/), нужно для клиентской маршрутизации.
+- [`react-query`](https://tanstack.com/query/latest), используется для управления серверным состоянием (запросы на авторизацию, получение данных о пользователе и т.д.).
+- [`zustand`](https://zustand.docs.pmnd.rs/), для управления клиентским состоянием, в особенности для управления сообщениями.
+
+Я специально прикрепил ссылки на документации, потому что тебе в том числе нужно научиться читать документацию. Я буду подсказывать, в какой момент нам понадобится каждая библиотека, и какую задачу делать следующей.
+
+## eof
+
+В целом это все, больше текста я не придумал, нам надо будет потестить первый пул реквест. Если что-то прям совсем не понятно, можешь спрашивать.
