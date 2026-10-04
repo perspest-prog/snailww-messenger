@@ -1,3 +1,5 @@
+import styles from './Button.module.css'
+
 interface ButtonProps {
   title: string;
   type: 'submit' | 'reset' | 'button';
@@ -5,8 +7,9 @@ interface ButtonProps {
 
 const Button = ({title, type}: ButtonProps) => {
   return (
-    <button className="auth__button" type={type}>{title}</button>
+    <button className={styles.button} type={type}>{title}</button>
   )
 }
 
 export default Button
+export type {ButtonProps}

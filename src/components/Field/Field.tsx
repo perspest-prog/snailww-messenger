@@ -1,3 +1,5 @@
+import styles from './Field.module.css'
+
 interface FieldProps {
   label: string;
   id: string;
@@ -6,10 +8,10 @@ interface FieldProps {
 
 const Field = ({label, id, type}: FieldProps) => {
   return (
-    <div className="field">
-      <label className="field__label" htmlFor={id}>{label}</label>
+    <div className={styles.field}>
+      <label className={styles.field__label} htmlFor={id}>{label}</label>
       <input
-        className="field__input"
+        className={styles.field__input}
         id={id}
         type={type}
       >
@@ -19,3 +21,4 @@ const Field = ({label, id, type}: FieldProps) => {
 }
 
 export default Field
+export type {FieldProps}
