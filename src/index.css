@@ -1,0 +1,14 @@
+:root {
+  --color-primary: #3369F3;
+}
+
+body {
+  font-family: 'Inter Variable', system-ui, sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
