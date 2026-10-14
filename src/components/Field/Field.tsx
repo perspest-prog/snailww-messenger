@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import styles from './Field.module.css'
+import Text, {type TextProps} from '../Text/Text'
 
 interface FieldProps {
   label: string;
-  id: string;
+  name: string;
   type: string;
   required?: boolean;
   pattern?: string;
   getValidationError?: (value: string) => string;
 }
 
-const Field = ({label, id, type, required, pattern, getValidationError}: FieldProps) => {
+const Field = ({label, name, type, required, pattern, getValidationError}: FieldProps) => {
   const [error, setError] = useState<string>('')
   const handleInvalid = (event: React.InvalidEvent<HTMLInputElement>) => {
     event.preventDefault()
@@ -27,11 +28,16 @@ const Field = ({label, id, type, required, pattern, getValidationError}: FieldPr
 
   return (
     <div className={styles.field}>
-      <label className={styles.label} htmlFor={id}>{label}</label>
+      <Text
+        tag="label"
+        variant="label"
+        htmlFor={name}
+        value={label}
+      />
       <input
         className={styles.input}
-        name={id}
-        id={id}
+        name={name}
+        id={name}
         type={type}
         required={required}
         pattern={pattern}

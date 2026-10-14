@@ -1,9 +1,11 @@
 :root {
   --color-primary: #3369F3;
+  --font-family: "Inter", sans-serif;
 }
 
 body {
-  font-family: 'Inter Variable', system-ui, sans-serif;
+  font-family: var(--font-family);
+  font-optical-sizing: auto;
 }
 
 .wrapper {
