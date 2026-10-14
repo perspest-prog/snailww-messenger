@@ -1,6 +1,7 @@
 import Field, {type FieldProps} from '../Field/Field'
 import Button, {type ButtonProps} from '../Button/Button'
 import Link, {type LinkProps} from '../Link/Link'
+import Text, {type TextProps} from '../Text/Text'
 import styles from './Form.module.css'
 
 interface FormProps {
@@ -19,11 +20,15 @@ const Form = ({title, fields, button, link, action}: FormProps) => {
   }
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h1 className={styles.h1}>{title}</h1>
+      <Text
+        tag='h1'
+        variant='title'
+        value={title}
+      />
       {fields.map((field) => (
         <Field
-          key={field.id}
-          id={field.id}
+          key={field.name}
+          name={field.name}
           label={field.label}
           type={field.type}
           required={field.required}
