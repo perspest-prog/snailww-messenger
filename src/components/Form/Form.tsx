@@ -1,18 +1,18 @@
-import Field, {type FieldProps} from '../Field/Field'
-import Button, {type ButtonProps} from '../Button/Button'
-import Link, {type LinkProps} from '../Link/Link'
-import Text, {type TextProps} from '../Text/Text'
+import Field, { type FieldProps } from '../Field/Field'
+import Button, { type ButtonProps } from '../Button/Button'
+import Link, { type LinkProps } from '../Link/Link'
+import Text, { type TextProps } from '../Text/Text'
 import styles from './Form.module.css'
 
 interface FormProps {
-  title: string;
-  fields: FieldProps[];
-  button: ButtonProps;
-  link: LinkProps;
-  action: (data: FormData) => void;
+  title: string
+  fields: FieldProps[]
+  button: ButtonProps
+  link: LinkProps
+  action: (data: FormData) => void
 }
 
-const Form = ({title, fields, button, link, action}: FormProps) => {
+const Form = ({ title, fields, button, link, action }: FormProps) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)

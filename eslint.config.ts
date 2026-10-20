@@ -19,17 +19,35 @@ export default defineConfig({
   rules: {
     '@stylistic/indent': ['error', 2],
     '@stylistic/semi': ['error', 'never'],
+    '@stylistic/member-delimiter-style': ['error', {
+      multiline: {
+        delimiter: 'none',
+        requireLast: false,
+      },
+      singleline: {
+        delimiter: 'semi',
+        requireLast: false,
+      },
+    }],
+    '@stylistic/comma-dangle': ['error', {
+      objects: 'always-multiline',
+      arrays: 'always-multiline',
+      functions: 'never',
+    }],
+    '@stylistic/arrow-parens': ['error', 'always'],
+    '@stylistic/array-bracket-spacing': ['error', 'never'],
+    '@stylistic/object-curly-spacing': ['error', 'always'],
     '@stylistic/no-trailing-spaces': 'error',
     '@stylistic/eol-last': 'error',
-    '@stylistic/no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0}],
+    '@stylistic/no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
     '@stylistic/quotes': ['error', 'single'],
 
-    '@stylistic/jsx-one-expression-per-line': ['warn', { allow: 'non-jsx'}],
-    '@stylistic/jsx-closing-bracket-location': 'warn',
+    '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'single-line' }],
+    '@stylistic/jsx-closing-tag-location': 'error',
     '@stylistic/jsx-equals-spacing': 'warn',
     '@stylistic/jsx-curly-spacing': ['warn', {
       when: 'never',
-      children: true
+      children: true,
     }],
 
     '@stylistic/jsx-tag-spacing': 'warn',
@@ -42,11 +60,11 @@ export default defineConfig({
 
     '@stylistic/exp-jsx-props-style': ['error', {
       singleLine: {
-        maxItems: 2
+        maxItems: 2,
       },
       multiLine: {
-        minItems: 3
+        minItems: 3,
       },
-    }]
-  }
+    }],
+  },
 })

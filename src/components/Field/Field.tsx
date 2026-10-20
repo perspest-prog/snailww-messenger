@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import styles from './Field.module.css'
-import Text, {type TextProps} from '../Text/Text'
+import Text, { type TextProps } from '../Text/Text'
 
 interface FieldProps {
-  label: string;
-  name: string;
-  type: string;
-  required?: boolean;
-  pattern?: string;
-  getValidationError?: (value: string) => string;
+  label: string
+  name: string
+  type: string
+  required?: boolean
+  pattern?: string
+  getValidationError?: (value: string) => string
 }
 
-const Field = ({label, name, type, required, pattern, getValidationError}: FieldProps) => {
+const Field = ({ label, name, type, required, pattern, getValidationError }: FieldProps) => {
   const [error, setError] = useState<string>('')
   const handleInvalid = (event: React.InvalidEvent<HTMLInputElement>) => {
     event.preventDefault()
@@ -50,4 +50,4 @@ const Field = ({label, name, type, required, pattern, getValidationError}: Field
 }
 
 export default Field
-export type {FieldProps}
+export type { FieldProps }

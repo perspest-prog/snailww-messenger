@@ -1,14 +1,14 @@
+import type { ComponentPropsWithoutRef, ElementType } from 'react'
 import styles from './Text.module.css'
 
-interface TextProps {
-  tag?: keyof JSX.IntrinsicElements;
-  variant: string;
-  value?: string;
-  [key: string]: any;
+interface TextProps<T extends keyof JSX.IntrinsicElements> {
+  tag?: T
+  variant: string
+  value?: string
 }
 
-const Text = ({ tag = 'span', variant, value, ...rest}: TextProps) => {
-  const CustomTag = tag
+const Text = <T extends keyof JSX.IntrinsicElements>({ tag, variant, value, ...rest }: TextProps<T> & JSX.IntrinsicElements[T]) => {
+  const CustomTag: ElementType<ComponentPropsWithoutRef<T>> = tag ?? 'span'
 
   return (
     <CustomTag className={styles[variant]} {...rest}>{value}</CustomTag>
@@ -16,4 +16,4 @@ const Text = ({ tag = 'span', variant, value, ...rest}: TextProps) => {
 }
 
 export default Text
-export type {TextProps}
+export type { TextProps }
