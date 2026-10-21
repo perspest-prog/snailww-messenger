@@ -1,3 +1,4 @@
+import { Link as RouterLink } from 'react-router'
 import styles from './Link.module.css'
 
 interface LinkProps {
@@ -7,7 +8,7 @@ interface LinkProps {
 
 const Link = ({ title, href }: LinkProps) => {
   return (
-    <a className={styles.a} href={href}>{title}</a>
+    <RouterLink className={styles.a} to={href}>{title}</RouterLink>
   )
 }
 

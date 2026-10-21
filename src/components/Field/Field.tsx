@@ -9,9 +9,11 @@ interface FieldProps {
   required?: boolean
   pattern?: string
   getValidationError?: (value: string) => string
+  externalError?: string
+  onValueChange?: (value: string) => void
 }
 
-const Field = ({ label, name, type, required, pattern, getValidationError }: FieldProps) => {
+const Field = ({ label, name, type, required, pattern, getValidationError, externalError, onValueChange }: FieldProps) => {
   const [error, setError] = useState<string>('')
   const handleInvalid = (event: React.InvalidEvent<HTMLInputElement>) => {
     event.preventDefault()
@@ -21,9 +23,11 @@ const Field = ({ label, name, type, required, pattern, getValidationError }: Fie
     }
   }
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.currentTarget.value
     if (getValidationError) {
       setError(getValidationError(event.currentTarget.value))
     }
+    onValueChange?.(value)
   }
 
   return (
@@ -44,7 +48,7 @@ const Field = ({ label, name, type, required, pattern, getValidationError }: Fie
         onChange={handleChange}
         onInvalid={handleInvalid}
       />
-      {error && <span className={styles.error}>{error}</span>}
+      {(error || externalError) && (<span className={styles.error}>{error || externalError}</span>)}
     </div>
   )
 }

@@ -4,8 +4,8 @@
   padding: 30px 30px;
   border: none;
   border-radius: 20px;
-  max-width: 340px;
-  height: 450px;
+  max-width: 360px;
+  min-height: 450px;
   box-sizing: border-box;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
