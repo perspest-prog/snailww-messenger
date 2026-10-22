@@ -17,21 +17,7 @@ const Form = ({ title, fields, button, link, action }: FormProps) => {
   const [confirmPasswordError, setConfirmPasswordError] = useState('')
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const form = event.currentTarget
-    const formData = new FormData(form)
-
-    const password = formData.get('password')
-    const confirmPassword = formData.get('confirmPassword')
-
-    if (
-      typeof password === 'string' &&
-      typeof confirmPassword === 'string' &&
-      password !== confirmPassword
-    ) {
-      setConfirmPasswordError('Пароли не совпадают')
-      return
-    }
-    setConfirmPasswordError('')
+    const formData = new FormData(event.currentTarget)
     action(formData)
   }
   return (
@@ -50,17 +36,6 @@ const Form = ({ title, fields, button, link, action }: FormProps) => {
           required={field.required}
           pattern={field.pattern}
           getValidationError={field.getValidationError}
-          externalError={
-            field.name === 'confirmPassword' ? confirmPasswordError : undefined
-          }
-          onValueChange={() => {
-            if (
-              field.name === 'password' ||
-              field.name === 'confirmPassword'
-            ) {
-              setConfirmPasswordError('')
-            }
-          }}
         />
       ))}
       <Button title={button.title} type={button.type} />

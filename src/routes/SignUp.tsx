@@ -44,11 +44,6 @@ function SignUp() {
               }
               return ''
             } },
-          { label: 'Пароль (еще раз)',
-            name: 'confirmPassword',
-            type: 'password',
-            required: true,
-            getValidationError: (value) => value ? '' : 'Повторите пароль' },
         ]}
         button={{ title: 'Зарегистрироваться', type: 'submit' }}
         link={{ title: 'Уже есть аккаунт?', href: '/signin' }}
