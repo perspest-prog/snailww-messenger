@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Field, { type FieldProps } from '../Field/Field'
 import Button, { type ButtonProps } from '../Button/Button'
 import Link, { type LinkProps } from '../Link/Link'
@@ -14,7 +13,6 @@ interface FormProps {
 }
 
 const Form = ({ title, fields, button, link, action }: FormProps) => {
-  const [confirmPasswordError, setConfirmPasswordError] = useState('')
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
